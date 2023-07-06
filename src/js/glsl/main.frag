@@ -1,10 +1,10 @@
 precision highp float;
 uniform float uTime;
-uniform vec3 uColor;
-uniform float uOffset;
+uniform sampler2D uTexture;
 varying vec2 vUv;
 
 void main() {
-  gl_FragColor.rgb = 0.3 + 0.3 * cos(vUv.xyx * uOffset + uTime) + uColor;
+  vec4 tex = texture2D(uTexture, vUv);
+  gl_FragColor.rgb = tex.rgb;
   gl_FragColor.a = 1.0;
 }
